@@ -1,9 +1,11 @@
 package os.memorandum.models.base;
 
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
@@ -16,11 +18,16 @@ import java.util.Objects;
 @NoArgsConstructor
 
 @MappedSuperclass
-public abstract class LongIdEntity {
+public abstract class LongIdEntity implements Entity {
 
 
     @Id
+    @SequenceGenerator(name = "base_seq",
+            sequenceName = "base_sequence",
+            allocationSize = 100)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "base_seq")
     private Long id;
+
 
     @Override
     public boolean equals(Object o) {
@@ -32,6 +39,9 @@ public abstract class LongIdEntity {
 
     @Override
     public int hashCode() {
-        return (int)(long)id;
+        if (getId() == null) {
+            return 0;
+        }
+        return (int)(long)getId();
     }
 }
