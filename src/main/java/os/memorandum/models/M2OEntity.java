@@ -8,7 +8,7 @@ import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import os.memorandum.models.base.LongIdEntity;
+import os.memorandum.models.base.BaseEntity;
 
 
 @SuperBuilder
@@ -18,8 +18,8 @@ import os.memorandum.models.base.LongIdEntity;
 @ToString(callSuper = true)
 
 @Entity
-@Table(name = "tests3")
-public class Test3Entity extends LongIdEntity {
+@Table(name = "m2o_tests")
+public class M2OEntity extends BaseEntity {
 
 
     private String testField;

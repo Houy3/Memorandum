@@ -1,5 +1,6 @@
 package os.memorandum.dto.base;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ import java.util.List;
 public class DtosPage<T> {
 
     @Schema(description = "Список объектов")
-    private List<T> dtos;
+    @JsonInclude()
+    private List<T> objects;
 }

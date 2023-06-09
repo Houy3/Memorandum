@@ -2,7 +2,7 @@ package os.memorandum.dto.test;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
-import os.memorandum.dto.base.LongIdDto;
+import os.memorandum.dto.base.BaseDto;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Schema(description = "Тест объект")
-public class TestDto extends LongIdDto {
+public class TestDto extends BaseDto {
 
     @Schema(description = "Тестовое поле")
     private String testField;

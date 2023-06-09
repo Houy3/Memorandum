@@ -3,7 +3,7 @@ package os.memorandum.exceptions;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import os.memorandum.services.base.ValidationError;
+import os.memorandum.services.check.core.ValidationError;
 
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package os.memorandum.services.base;
+package os.memorandum.services.check.core;
 
 
 import lombok.Builder;

@@ -17,7 +17,7 @@ public class TestController {
     private final TestService service;
 
     @PostMapping()
-    public ResponseEntity<TestDto> add(@Valid @ModelAttribute NewTestDto dto) {
+    public ResponseEntity<TestDto> add(@Valid @RequestBody NewTestDto dto) {
         return ResponseEntity
                 .ok(service.add(dto));
     }

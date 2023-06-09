@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import os.memorandum.utils.mapper.Entity;
 
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ import java.util.Objects;
 @NoArgsConstructor
 
 @MappedSuperclass
-public abstract class LongIdEntity implements Entity {
+public abstract class BaseEntity implements Entity {
 
 
     @Id
@@ -26,6 +27,7 @@ public abstract class LongIdEntity implements Entity {
             sequenceName = "base_sequence",
             allocationSize = 100)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "base_seq")
+    @Basic
     private Long id;
 
 
@@ -33,7 +35,7 @@ public abstract class LongIdEntity implements Entity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        LongIdEntity that = (LongIdEntity) o;
+        BaseEntity that = (BaseEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
