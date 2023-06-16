@@ -9,12 +9,9 @@ import lombok.Data;
 @Builder
 public class ValidationErrorDto {
 
-    @Schema(description = "Наименование объекта")
-    private String objectName;
-
     @Schema(description = "Наименование поля")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String fieldName;
+    private String field;
 
     @Schema(description = "Сообщение")
     private String message;

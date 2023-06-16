@@ -1,6 +1,7 @@
 package os.memorandum.services.check.core;
 
 import org.springframework.core.convert.ConversionService;
+import org.springframework.validation.annotation.Validated;
 import os.memorandum.exceptions.ServiceValidationException;
 import os.memorandum.models.base.BaseEntity;
 import os.memorandum.repositories.base.BaseJpaRepository;
@@ -8,7 +9,7 @@ import os.memorandum.services.base.BaseService;
 
 import java.util.*;
 
-
+@Validated
 public abstract class CheckService<Entity extends BaseEntity, Repository extends BaseJpaRepository<Entity>> extends BaseService<Entity, Repository> {
 
     private final List<Check<Entity>> checks;

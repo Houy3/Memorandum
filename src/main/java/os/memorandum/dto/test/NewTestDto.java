@@ -17,6 +17,9 @@ public class NewTestDto implements Dto {
     @NotNull
     private String testField;
 
+    @Schema(description = "Тестовое поле2")
+    private String testField2;
+
     @Schema(description = "Тестовое время")
     private LocalDateTime time;
 }

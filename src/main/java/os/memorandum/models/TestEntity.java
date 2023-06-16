@@ -25,6 +25,9 @@ public class TestEntity extends BaseEntity {
     @Column(unique = true)
     private String testField;
 
+    @Column(nullable = false)
+    private String testField2;
+
     private LocalDateTime time;
     
 }

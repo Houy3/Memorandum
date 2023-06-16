@@ -3,19 +3,18 @@ package os.memorandum.utils;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
-
-public class ReflectionUtils extends org.springframework.util.ReflectionUtils {
+public class ReflectionUtils {
 
 
     public static <T> Class<T> getGenericParameterClass(Class<?> actualClass, int parameterIndex) {
-
-        Type type = actualClass.getGenericSuperclass();
-        ParameterizedType parameterizedType = (ParameterizedType) type;
-        Type typeClazz = parameterizedType.getActualTypeArguments()[--parameterIndex];
-
-        return (Class<T>) typeClazz;
+        try {
+            return (Class<T>)((ParameterizedType)actualClass.getGenericSuperclass()).getActualTypeArguments()[--parameterIndex];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("Wrong parameterIndex.");
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Problems with actualClass.");
+        }
     }
 
     public static <T> T getObject(Class<T> clazz) {
@@ -26,5 +25,6 @@ public class ReflectionUtils extends org.springframework.util.ReflectionUtils {
             throw new IllegalArgumentException("An empty constructor is required.");
         }
     }
+
 
 }

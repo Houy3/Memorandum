@@ -7,7 +7,6 @@ import os.memorandum.dto.test.TestDto;
 import os.memorandum.models.TestEntity;
 import os.memorandum.repositories.TestRepository;
 import os.memorandum.services.TestService;
-import os.memorandum.services.check.UniqueCheck;
 import os.memorandum.services.check.core.Check;
 import os.memorandum.services.check.core.CheckService;
 
@@ -26,13 +25,16 @@ public class TestServiceImpl extends CheckService<TestEntity, TestRepository> im
     @Override
     public TestDto add(NewTestDto dto) {
         TestEntity testEntity = converter.convert(dto, TestEntity.class);
+
+//        throw new RuntimeException("lol");
         save(testEntity);
+
         return converter.convert(testEntity, TestDto.class);
     }
 
     @Override
     protected List<Check<TestEntity>> registerChecks(List<Check<TestEntity>> checks) {
-        checks.add(new UniqueCheck<>(repository, "testField"));
+//        checks.add(new UniqueCheck<>(repository, "testField", TestEntity.class));
         return checks;
     }
 
